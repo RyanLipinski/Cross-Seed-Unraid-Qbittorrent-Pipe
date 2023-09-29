@@ -30,7 +30,7 @@ This guide presumes that the following has been set up:
 
 1. To begin, download cross-watch.txt, cross-watch-script.sh, ontorrentcomplete.sh
 2. Place cross-watch.txt and ontorrentcomplete.sh within a folder on your server to which QBittorrent will have access.
-3. **Torrent Completion Script Configuration** Open ontorrentcomplete.sh and adjust the file path on line 3 to point to the location of cross-watch.txt. This needs to be the path that QBittorrent sees.
+3. **Torrent Completion Script Configuration** Open ontorrentcomplete.sh and adjust the file path on line 5 to point to the location of cross-watch.txt. This needs to be the path that QBittorrent sees.
 4. **QBittorrent Configuration** Within QBittorrent, go to Options -> Downloads -> Run External Program. Click the check mark in the box titled "Run external program on torrent finished" and paste the following script into the box (replace the path name with the path name of the folder you created in Step 2). This needs to be the path the QBittorrent sees:
 
     /scripts/ontorrentcomplete.sh "%N"
