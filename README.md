@@ -29,9 +29,14 @@ This guide presumes that the following has been set up:
 ### Guide
 
 1. To begin, download cross-watch.txt, cross-watch-script.sh, ontorrentcomplete.sh
-2. Place all three files within a folder on your server that Qbittorrent and Cross-Seed both have access to. It is recommended that the file mappings to this folder are consistent between Qbittorrent and Cross-Seed.
-3. **QBittorrent Configuration** Within QBittorrent, go to Options -> Downloads -> Run External Program. Click the check mark in the box titled "Run external program on torrent finished" and paste the following script into the box (replace the path name with the path name of the folder you created in Step 2, remember that this needs to be the path the QBittorrent sees):
+2. Place cross-watch.txt and ontorrentcomplete.sh within a folder on your server to which QBittorrent will have access.
+3. **Torrent Completion Script Configuration** Open ontorrentcomplete.sh and adjust the file path on line 3 to point to the location of cross-watch.txt. This needs to be the path that QBittorrent sees.
+4. **QBittorrent Configuration** Within QBittorrent, go to Options -> Downloads -> Run External Program. Click the check mark in the box titled "Run external program on torrent finished" and paste the following script into the box (replace the path name with the path name of the folder you created in Step 2). This needs to be the path the QBittorrent sees:
 
     /scripts/ontorrentcomplete.sh "%N"
 
-4. **User Scripts Configuration** Within the User Scripts Plugin, click "Add New Script"
+5. **User Scripts Configuration** Within the User Scripts Plugin, click "Add New Script". Copy and paste the code within "cross-watch-script.sh" into the code section of your script.
+6. **User Scripts Configuration** Within the script that you pasted, edit the input field in line 3 to point to the location of crosswatch.txt (set up in step 2). Remember that this needs to be the path that Unraid sees (do not use the container path set up for QBittorrent).
+7. **User Scripts Configuration** Update the ip address in line 7 to point to the local ip address for Cross-Seed. Save and exit the script.
+8. **User Scripts Configuration** Adjust the frequency you want to run the script in the User Scripts GUI, this determines the frequency by which you want completed torrents to be searched.
+9. **Testing** To test this script, download a torrent within QBittorrent. Upon the completion of the torrent, open cross-watch.txt and validate that the torrent name has been added to the text file. Then manually run the script you created in User Scripts. Read the logfile for Cross-Seed to ensure that the torrent has been searched. Finally, open the cross-watch.txt file again and ensure that the name of the torrent has been removed/the file is blank.
