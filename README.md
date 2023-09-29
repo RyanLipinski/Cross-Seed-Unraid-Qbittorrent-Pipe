@@ -29,5 +29,9 @@ This guide presumes that the following has been set up:
 ### Guide
 
 1. To begin, download cross-watch.txt, cross-watch-script.sh, ontorrentcomplete.sh
-2. Place all three files within a folder on your server that Qbittorrent and Cross-Seed both have access to. Make sure that the mapping in the Docker Container on Unraid is the same between Qbittorrent and Cross-Seed (ie. if your folder is in "/mnt/User/scripts" which is mounted using "/scripts", make sure that the mapping to "/scripts" is the same for both Qbittorrent and Cross-Seed.
-3. 
+2. Place all three files within a folder on your server that Qbittorrent and Cross-Seed both have access to. It is recommended that the file mappings to this folder are consistent between Qbittorrent and Cross-Seed.
+3. **QBittorrent Configuration** Within QBittorrent, go to Options -> Downloads -> Run External Program. Click the check mark in the box titled "Run external program on torrent finished" and paste the following script into the box (replace the path name with the path name of the folder you created in Step 2, remember that this needs to be the path the QBittorrent sees):
+
+    /scripts/ontorrentcomplete.sh "%N"
+
+4. **User Scripts Configuration** Within the User Scripts Plugin, click "Add New Script"
